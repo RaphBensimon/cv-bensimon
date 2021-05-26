@@ -1,0 +1,18 @@
+{
+	"extends": ["stylelint-config-standard"],
+	"plugins": [
+		"stylelint-scss"
+	],
+	"rules": {
+		"indentation": "tab",
+		"rule-empty-line-before": "never",
+		"at-rule-no-unknown": null,
+		"no-descending-specificity": null,
+		"selector-max-compound-selectors": 6,
+		"max-nesting-depth": [0, {"ignore": ["pseudo-classes"]}],
+		"scss/at-import-partial-extension-blacklist": [null],
+		"selector-max-id": 2,
+		"selector-pseudo-element-colon-notation": "single",
+		"string-quotes": "single"
+	}
+}

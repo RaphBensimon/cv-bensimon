@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+body {
+    background-color: $primary;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: $primary;
+    font-size: 14px;
+    padding: 50px 0;
+    margin: 0;
+}
+h5 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+b {
+    color: $secondary;
+}
