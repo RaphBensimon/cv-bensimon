@@ -30,7 +30,7 @@
 		</div>
 		<div class="knowledges my-4">
 			<h5>Connaissances</h5>
-			<div class="d-flex">
+			<div class="d-flex flex-wrap">
 				<div class="knwoledge" v-for="(el, i) in knwoledges" :key="i">
 					<p class="my-0">
 						<span v-if="i != 0">,</span>
@@ -139,5 +139,10 @@ export default {
 }
 .knwoledge {
 	display: flex;
+}
+@media screen and (max-width: 769px){
+	h1 {
+		font-size: 3rem;
+	}
 }
 </style>

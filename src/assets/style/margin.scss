@@ -10,3 +10,8 @@
     margin-top: 1rem !important;
     margin-bottom: 1rem !important;
 }
+.child-mx-2 > *:not(:first-of-type, :last-of-type) {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+
+}

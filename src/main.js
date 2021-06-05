@@ -2,7 +2,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import Icon from './components/Icon.vue';
-const app = createApp(App);
+import { createMetaManager } from 'vue-meta';
+const app = createApp(App)
+	.use(router)
+	.use(createMetaManager());
 app.component('Icon', Icon);
-app.use(router);
 app.mount('#app');

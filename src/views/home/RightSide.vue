@@ -10,7 +10,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container" id="education">
 			<h5>Formations</h5>
 			<div class="content education" v-for="(el, i) in education" :key="i">
 				<div class="bold">
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container" id="passion">
 			<h5>Passion</h5>
 			<div class="content" v-for="(el, i) in passion" :key="i">
 				<div>{{ el }}</div>
@@ -105,6 +105,11 @@ export default {
 	&:hover {
 		color: $secondary;
 		text-decoration: underline !important;
+	}
+}
+@media screen and (max-width: 650px){
+	#right-side {
+		align-items: flex-start;
 	}
 }
 </style>
