@@ -22,10 +22,26 @@ export default {
 	},
 	data() {
 		return {
-			paper : '',
+			paper  : '',
+			timers : [],
 		};
 	},
 	mounted() {
+		const t = this;
+		document.addEventListener('visibilitychange', function() {
+			if(document.hidden) {
+				t.paper = '';
+				for (let i = 0; i < t.timers.length; i++) {
+					const timer = t.timers[i];
+					clearTimeout(timer);
+				}
+			} else {
+				t.paper = '';
+				setTimeout(() => {
+					t.printer();
+				}, 200);
+			}
+		});
 		this.printer();
 	},
 	methods : {
@@ -37,14 +53,14 @@ export default {
 				if(!pause || pause < 200) {
 					pause = timer;
 				}
-				setTimeout(() => {
+				this.timers.push(setTimeout(() => {
 					for (let e = 0; e < letters.length; e++) {
 						const letter = letters[e];
 						setTimeout(() => {
 							this.paper += letter;
 						}, (e + 1) * timer);
 					}
-				}, i * (this.time + pause));
+				}, i * (this.time + pause)));
 			}
 		},
 	},
@@ -57,7 +73,6 @@ export default {
 			if(!pause || pause < 200) {
 				pause = Math.ceil((this.time / ( Array.from(paper).length + 1)));
 			}
-
 			if(index == (this.words.length - 1)) {
 				setTimeout(() => {
 					this.paper = '';
