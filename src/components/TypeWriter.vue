@@ -22,26 +22,10 @@ export default {
 	},
 	data() {
 		return {
-			paper  : '',
-			timers : [],
+			paper : '',
 		};
 	},
 	mounted() {
-		const t = this;
-		document.addEventListener('visibilitychange', function() {
-			if(document.hidden) {
-				t.paper = '';
-				for (let i = 0; i < t.timers.length; i++) {
-					const timer = t.timers[i];
-					clearTimeout(timer);
-				}
-			} else {
-				t.paper = '';
-				setTimeout(() => {
-					t.printer();
-				}, 200);
-			}
-		});
 		this.printer();
 	},
 	methods : {
@@ -53,14 +37,14 @@ export default {
 				if(!pause || pause < 200) {
 					pause = timer;
 				}
-				this.timers.push(setTimeout(() => {
+				setTimeout(() => {
 					for (let e = 0; e < letters.length; e++) {
 						const letter = letters[e];
 						setTimeout(() => {
 							this.paper += letter;
 						}, (e + 1) * timer);
 					}
-				}, i * (this.time + pause)));
+				}, i * (this.time + pause));
 			}
 		},
 	},
