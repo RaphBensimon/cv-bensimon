@@ -1,115 +1,196 @@
 <template>
 	<div id="right-side">
-		<img src="@/assets/img/raphael-bensimon.jpg" id="profile-picture" />
-		<div class="container">
-			<h5>Contact</h5>
-			<div class="content d-flex contact" v-for="(el, i) in contacts" :key="i">
-				<Icon :icon="el.icon" />
-				<a :href="el.link" target="_blank" class="text-decoration-none">
-					{{ el.text }}
+		<p class="my-0">
+			{{ $t('introduction-text-part-1') }}
+			<b>{{ $t('web-solution') }}</b>,
+			{{ $t('introduction-text-part-2') }}
+		</p>
+		<div class="experiences my-4">
+			<h5>{{ $t('experiences') }}</h5>
+			<div class="experience" v-for="(el, i) in experiences" :key="i">
+				<a :href="'https://www.'+el.company" target="_blank" class="bold color-primary">
+					{{ el.company }}
 				</a>
+				<div class="italic color-black">
+					{{ el.job }} / {{ el.jobType }} / {{ el.date }}
+				</div>
+				<p class="my-0">
+					{{ el.description }}
+				</p>
 			</div>
 		</div>
-		<div class="container" id="education">
-			<h5>Formations</h5>
-			<div class="content education" v-for="(el, i) in education" :key="i">
-				<div class="bold">
-					{{ el.value }}
+		<div class="competencies my-4">
+			<h5>{{ $t('competencies') }}</h5>
+			<div class="competence" v-for="(el, i) in competences" :key="i">
+				<div class="text" :class="el.class">
+					{{ el.text }}
 				</div>
-				<div class="italic">
-					{{ el.school }}
-				</div>
+				<ProgressBar :percentage="el.percentage" :max-width="50" />
 			</div>
 		</div>
-		<div class="container" id="passion">
-			<h5>Passion</h5>
-			<div class="content" v-for="(el, i) in passion" :key="i">
-				<div>{{ el }}</div>
+		<div class="knowledges my-4">
+			<h5>{{ $t('knowledges') }}</h5>
+			<div class="d-flex flex-wrap">
+				<div class="knwoledge" v-for="(el, i) in knwoledges" :key="i">
+					<p class="my-0">
+						<span v-if="i != 0">,</span>
+						{{ el }}
+					</p>
+					<div class="color-secondary">
+						<Icon icon="checkmark" />
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
+import ProgressBar from '@/components/ProgressBar.vue';
 export default {
+	components : {
+		ProgressBar
+	},
+	created() {
+	},
 	data() {
 		return {
-			contacts : [
+			experiences : [
 				{
-					text  : '06 58 75 91 17',
-					link  : 'tel:+33658759117',
-					icon  : 'call'
-				},
-				{
-					text : 'rbensimon05@gmail.com',
-					link : 'mailto:rbensimon05@gmail.com',
-					icon : 'mail'
-				},
-				{
-					text : 'Villemomble, 93250',
+					company     : 'McLedger.io',
+					job         : this.$i18n.t('lead-front-end'),
+					jobType     : this.$i18n.t('permanent-position'),
+					date        : '2020 - ' + this.$i18n.t('present'),
 					// eslint-disable-next-line max-len
-					link : 'https://www.google.com/maps/place/93250+Villemomble/@48.88658,2.4909237,14z/data=!4m5!3m4!1s0x47e612502888b9d7:0xa5cd5ba803bfbddb!8m2!3d48.886727!4d2.505069',
-					icon : 'location'
+					description : this.$i18n.t('mcledger-description')
 				},
 				{
-					text  : 'https://github.com/RaphBensimon',
-					link  : 'https://github.com/RaphBensimon',
-					icon  : 'logo-github'
+					company     : 'Data4Job.com',
+					job         : this.$i18n.t('web-developer-front-end'),
+					jobType     : this.$i18n.t('permanent-position'),
+					date        : '2019 - 2020',
+					// eslint-disable-next-line max-len
+					description : this.$i18n.t('data4job-description')
 				},
+				{
+					company     : 'Data4Job.com',
+					job         : this.$i18n.t('web-developer-front-end'),
+					jobType     : this.$i18n.t('apprenticeship'),
+					date        : '2017 - 2019',
+					// eslint-disable-next-line max-len
+					description : this.$i18n.t('data4job-description')
+				},
+				{
+					company     : 'Immojeune.com',
+					job         : this.$i18n.t('front-end-integrator'),
+					jobType     : this.$i18n.t('internship'),
+					date        : '2016',
+					// eslint-disable-next-line max-len
+					description : this.$i18n.t('immojeune-description')
+				},
+
 			],
-			education : [
+			competences : [
 				{
-					value  : 'Master MS2I',
-					school : 'ORT Montreuil 2019'
+					text       : 'VueJs',
+					percentage : 100,
+					class      : 'bold'
 				},
 				{
-					value  : 'Bachelor CSI',
-					school : 'ORT Montreuil 2017'
+					text       : 'NuxtJs',
+					percentage : 80
 				},
 				{
-					value  : 'Classe prépratoire web',
-					school : 'ORT Montreuil 2015'
+					text       : 'CSS/LESS/SCSS',
+					percentage : 80
 				},
 				{
-					value  : 'BAC STL',
-					school : 'Lycée Gregor Mendel'
+					text       : 'Bootstrap Vue',
+					percentage : 80,
+					class      : 'bold'
 				},
+				{
+					text       : 'Vue Router',
+					percentage : 80
+				},
+				{
+					text       : 'Vuex',
+					percentage : 80
+				},
+				{
+					text       : 'i18n Vue',
+					percentage : 80
+				},
+				{
+					text       : 'Vuelidate',
+					percentage : 75
+				}
 			],
-			passion : ['Automobile']
+			knwoledges : [
+				'Cypress', 'MongoDB', 'Eslint', 'Stylelint', 'Git'
+			]
 		};
 	}
 };
 </script>
 <style lang="scss" scoped>
-#right-side {
-	background-color: darken($white, 5%);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-#right-side > * {
-	width: 100%;
-}
-#profile-picture {
-	width: 200px;
-	border-radius: 50%;
-}
-.container {
-	margin-top: 2rem;
-}
-.content {
+.experience {
 	margin: 10px 0;
 }
-.contact a {
-	margin-left: 0.5rem;
-	color: $primary;
-	&:hover {
-		color: $secondary;
-		text-decoration: underline !important;
-	}
+.competence {
+	display: flex;
+	margin-bottom: 7px;
 }
-@media screen and (max-width: 650px){
-	#right-side {
-		align-items: flex-start;
+.competence .text {
+	width: 100px;
+}
+.knwoledge {
+	display: flex;
+}
+@media screen and (max-width: 769px){
+	h1 {
+		font-size: 3rem;
 	}
 }
 </style>
+<!-- eslint-disable -->
+<i18n>
+{
+	"en": {
+		"introduction-text-part-1":  "As a web developer, my goal is to understand the needs of customers, internal teams and convert them into a",
+		"web-solution": "web solution",
+		"introduction-text-part-2": "respecting the time constraints without neglecting the quality.",
+		"lead-front-end": "Lead front-end",
+		"web-developer-front-end" : "Web developer front-end",
+		"present" : "Present",
+		"permanent-position" : "Permanent position",
+		"mcledger-description" : "Development from scratch of a SaaS B2B solution for FRET management under VueJs.",
+		"data4job-description" : "Web development under VueJs/NuxtJs of SaaS B2B solutions for human resources.",
+		"apprenticeship": "Apprenticeship",
+		"internship": "Internship",
+		"immojeune-description": " Native web integration of SEO web pages using graphic templates (HTML, CSS, JS).",
+		"front-end-integrator": "Front-end integrator",
+		"experiences": "Experiences",
+		"competencies": "Competencies",
+		"knowledges": "Knowledges"
+	},
+	"fr": {
+		"introduction-text-part-1":  "En tant que développeur web, mon objectif est de comprendre les besoins des clients, des équipes internes et de les convertir en une",
+		"web-solution": "solution web",
+		"introduction-text-part-2": "en respectant les contraintes de temps sans négliger la qualité.",
+		"lead-front-end": "Lead front-end",
+		"web-developer-front-end" : "Développeur front-end",
+		"present" : "Présent",
+		"permanent-position" : "CDI",
+		"mcledger-description" : "Développement from scratch d'un solution SaaS B2B à destination de la gestion de FRET sous VueJs.",
+		"data4job-description" : "Développement web sous VueJs/NuxtJs de solutions SaaS B2B à destination des ressources humaines.",
+		"apprenticeship": "Alternance",
+		"internship": "Stage",
+		"immojeune-description": "Intégration web natif de page web SEO à l'aide de maquette graphique (HTML,CSS, JS).",
+		"front-end-integrator": "Intégrateur front-end",
+		"experiences": "Expériences",
+		"competencies": "Compétences",
+		"knowledges": "Connaissances"
+	}
+}
+</i18n>
+<!-- eslint-disable -->

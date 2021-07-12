@@ -1,148 +1,143 @@
 <template>
 	<div id="left-side">
-		<p class="my-0">
-			En tant que développeur web, mon objectif est de comprendre les besoins des clients, des équipes internes
-			et de les convertir en une <b>solution web</b>, en respectant les contraintes de temps sans négliger
-			la qualité.
-		</p>
-		<div class="experiences my-4">
-			<h5>Expériences</h5>
-			<div class="experience" v-for="(el, i) in experiences" :key="i">
-				<a :href="'https://www.'+el.company" target="_blank" class="bold color-primary">
-					{{ el.company }}
-				</a>
-				<div class="italic color-black">
-					{{ el.job }} / {{ el.jobType }} / {{ el.date }}
-				</div>
-				<p class="my-0">
-					{{ el.description }}
-				</p>
-			</div>
-		</div>
-		<div class="competencies my-4">
-			<h5>Compétences</h5>
-			<div class="competence" v-for="(el, i) in competences" :key="i">
-				<div class="text" :class="el.class">
+		<img src="@/assets/img/raphael-bensimon.jpg" id="profile-picture" />
+		<div class="container">
+			<h5>{{ $t('contact') }}</h5>
+			<div class="content d-flex contact" v-for="(el, i) in contacts" :key="i">
+				<Icon :icon="el.icon" />
+				<a :href="el.link" target="_blank" class="text-decoration-none">
 					{{ el.text }}
-				</div>
-				<ProgressBar :percentage="el.percentage" :max-width="50" />
+				</a>
 			</div>
 		</div>
-		<div class="knowledges my-4">
-			<h5>Connaissances</h5>
-			<div class="d-flex flex-wrap">
-				<div class="knwoledge" v-for="(el, i) in knwoledges" :key="i">
-					<p class="my-0">
-						<span v-if="i != 0">,</span>
-						{{ el }}
-					</p>
-					<div class="color-secondary">
-						<Icon icon="checkmark" />
-					</div>
+		<div class="container" id="education">
+			<h5>{{ $t('formations') }}</h5>
+			<div class="content education" v-for="(el, i) in education" :key="i">
+				<div class="bold">
+					{{ el.value }}
 				</div>
+				<div class="italic">
+					{{ el.school }}
+				</div>
+			</div>
+		</div>
+		<div class="container" id="passion">
+			<h5>{{ $t('passion') }}</h5>
+			<div class="content" v-for="(el, i) in passion" :key="i">
+				<div>{{ el }}</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-import ProgressBar from '@/components/ProgressBar.vue';
 export default {
-	components : {
-		ProgressBar
-	},
 	data() {
 		return {
-			experiences : [
+			contacts : [
 				{
-					company     : 'McLedger.io',
-					job         : 'Lead front-end',
-					jobType     : 'CDI',
-					date        : '2020 - Présent',
-					// eslint-disable-next-line max-len
-					description : 'Développement from scratch d\'un outil web sous VueJs.'
+					text  : '06 58 75 91 17',
+					link  : 'tel:+33658759117',
+					icon  : 'call'
 				},
 				{
-					company     : 'Data4Job.com',
-					job         : 'Développeur front-end',
-					jobType     : 'CDI',
-					date        : '2019-2020',
-					// eslint-disable-next-line max-len
-					description : 'Développement web sous VueJs des différentes plateformes web de l\'entreprise.'
+					text : 'rbensimon05@gmail.com',
+					link : 'mailto:rbensimon05@gmail.com',
+					icon : 'mail'
 				},
 				{
-					company     : 'Data4Job.com',
-					job         : 'Développeur front-end',
-					jobType     : 'Alternance',
-					date        : '2017-2019',
+					text : 'Villemomble, 93250',
 					// eslint-disable-next-line max-len
-					description : 'Développement web sous VueJs des différentes plateformes web de l\'entreprise.'
+					link : 'https://www.google.com/maps/place/93250+Villemomble/@48.88658,2.4909237,14z/data=!4m5!3m4!1s0x47e612502888b9d7:0xa5cd5ba803bfbddb!8m2!3d48.886727!4d2.505069',
+					icon : 'location'
 				},
 				{
-					company     : 'Immojeune.com',
-					job         : 'Intégrateur front-end',
-					jobType     : 'Stage',
-					date        : '2016',
-					// eslint-disable-next-line max-len
-					description : 'Intégration web natif de landing page à l\'aide de maquette graphique (HTML,CSS, JS).'
+					text  : 'https://github.com/RaphBensimon',
+					link  : 'https://github.com/RaphBensimon',
+					icon  : 'logo-github'
 				},
-
 			],
-			competences : [
+			education : [
 				{
-					text       : 'Vuejs',
-					percentage : 100,
-					class      : 'bold'
+					value  : 'Master MS2I',
+					school : 'ORT Montreuil 2019'
 				},
 				{
-					text       : 'Css/Scss/Less',
-					percentage : 80
+					value  : 'Bachelor CSI',
+					school : 'ORT Montreuil 2017'
 				},
 				{
-					text       : 'Bootstrap Vue',
-					percentage : 80,
-					class      : 'bold'
+					value  : this.$i18n.t('preparatory-web-class'),
+					school : 'ORT Montreuil 2015'
 				},
 				{
-					text       : 'Vue Router',
-					percentage : 80
+					value  :  this.$i18n.t('baccalaureate') + ' STL',
+					school : this.$i18n.t('high-school') + 'Gregor Mendel'
 				},
-				{
-					text       : 'Vuex',
-					percentage : 80
-				},
-				{
-					text       : 'i18n Vue',
-					percentage : 80
-				},
-				{
-					text       : 'Vuelidate',
-					percentage : 75
-				}
 			],
-			knwoledges : [
-				'Cypress', 'MongoDB', 'Eslint', 'Stylelint', 'Git'
+			passion : [
+				this.$i18n.t('automotive')
 			]
 		};
 	}
 };
 </script>
 <style lang="scss" scoped>
-.experience {
+#left-side {
+	background-color: darken($white, 5%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#left-side > * {
+	width: 100%;
+}
+#profile-picture {
+	width: 200px;
+	border-radius: 50%;
+}
+.container {
+	margin-top: 2rem;
+}
+.content {
 	margin: 10px 0;
 }
-.competence {
-	display: flex;
-	margin-bottom: 7px;
+.contact a {
+	margin-left: 0.5rem;
+	color: $primary;
+	&:hover {
+		color: $secondary;
+		text-decoration: underline !important;
+	}
 }
-.competence .text {
-	width: 100px;
-}
-.knwoledge {
-	display: flex;
-}
-@media screen and (max-width: 769px){
-	h1 {
-		font-size: 3rem;
+@media screen and (max-width: 700px){
+	#left-side {
+		align-items: flex-start;
+	}
+	.container {
+		margin-top: 1rem;
 	}
 }
 </style>
+<i18n>
+{
+	"en": {
+		"formations": "Formations",
+		"contact": "Contact",
+		"passion": "Passion",
+		"preparatory-web-class": "Preparatory web class",
+		"baccalaureate": "Baccalaureate",
+		"high-school": "High school",
+		"automotive": "Automotive"
+	},
+	"fr": {
+		"formations": "Formations",
+		"contact": "Contact",
+		"passion": "Passion",
+		"preparatory-web-class": "Classe préparatoire web",
+		"baccalaureate": "Baccalauréat",
+		"high-school": "Lycée",
+		"automotive": "Automobile"
+
+	}
+}
+</i18n>

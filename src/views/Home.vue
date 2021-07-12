@@ -3,7 +3,7 @@
 		<header>
 			<h1>Raphaël BENSIMON</h1>
 			<h2>
-				Développeur web
+				{{ $t('web-developer') }}
 				<b><TypeWriter :words="words" :time="1000" :pause="2000" /></b>
 			</h2>
 		</header>
@@ -11,12 +11,12 @@
 			<div id="bar" />
 		</div>
 		<div id="side-container">
-			<RightSide />
 			<LeftSide />
+			<RightSide />
 		</div>
 		<footer>
 			<p class="my-0">
-				Développé sous Vuejs
+				{{ $t('developed-with-vuejs') }}
 			</p>
 		</footer>
 	</div>
@@ -126,9 +126,21 @@ footer {
 		font-size: 3rem;
 	}
 }
-@media screen and (max-width: 650px){
+@media screen and (max-width: 700px){
 	#side-container{
 		flex-direction: column;
 	}
 }
 </style>
+<i18n>
+{
+	"en": {
+		"web-developer": "Web developer",
+		"developed-with-vuejs": "Developed with vuejs"
+	},
+	"fr": {
+		"web-developer": "Développeur web",
+		"developed-with-vues": "Développé sous vuejs"
+	}
+}
+</i18n>
