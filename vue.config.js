@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 module.exports = {
 	css : {
 		loaderOptions : {
@@ -20,7 +21,9 @@ module.exports = {
 			.rule('i18n')
 			.resourceQuery(/blockType=i18n/)
 			.type('javascript/auto')
-			.use('i18n')
+			.use('i18n', webpack.DefinePlugin, [{
+				__INTLIFY_PROD_DEVTOOLS__ : false
+			}])
 			.loader('@intlify/vue-i18n-loader');
 	},
 	publicPath : './'
