@@ -140,4 +140,20 @@ export default {
 
 	}
 }
+<<<<<<< HEAD
 </i18n>
+=======
+/deep/.progress-bar {
+	color: $light-grey;
+}
+/deep/.progress-percentage {
+	color: $secondary;
+}
+/deep/.progress-bar, /deep/.progress-percentage {
+	border-top-left-radius: 0;
+	border-top-right-radius: $border-radius;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: $border-radius;
+}
+</style>
+>>>>>>> e96566f5aab15450a3ad34731696f6db6adb5823

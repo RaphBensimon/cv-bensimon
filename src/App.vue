@@ -1,4 +1,3 @@
-
 <template>
 	<div id="view">
 		<metainfo>
