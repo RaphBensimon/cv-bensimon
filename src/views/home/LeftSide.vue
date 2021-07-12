@@ -117,18 +117,6 @@ export default {
 		margin-top: 1rem;
 	}
 }
-/deep/.progress-bar {
-	color: $light-grey;
-}
-/deep/.progress-percentage {
-	color: $secondary;
-}
-/deep/.progress-bar, /deep/.progress-percentage {
-	border-top-left-radius: 0;
-	border-top-right-radius: $border-radius;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: $border-radius;
-}
 </style>
 <i18n>
 {

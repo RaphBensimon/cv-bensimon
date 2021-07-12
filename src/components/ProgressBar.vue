@@ -44,6 +44,9 @@ export default {
 		}
 	},
 	mounted() {
+		setTimeout(() => {
+			this.visible = true;
+		}, 1);
 	},
 	methods : {
 		animationOnScroll() {

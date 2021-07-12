@@ -25,7 +25,7 @@
 				<div class="text" :class="el.class">
 					{{ el.text }}
 				</div>
-				<ProgressBar :percentage="el.percentage" :max-width="50" />
+				<ProgressBar :percentage="el.percentage" :max-width="50" :animate-on-scroll="true" />
 			</div>
 		</div>
 		<div class="knowledges my-4">
@@ -150,6 +150,18 @@ export default {
 	h1 {
 		font-size: 3rem;
 	}
+}
+/deep/.progress-bar {
+	color: $light-grey;
+}
+/deep/.progress-percentage {
+	color: $secondary;
+}
+/deep/.progress-bar, /deep/.progress-percentage {
+	border-top-left-radius: 0;
+	border-top-right-radius: $border-radius;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: $border-radius;
 }
 </style>
 <!-- eslint-disable -->
