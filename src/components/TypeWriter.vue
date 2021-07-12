@@ -61,11 +61,11 @@ export default {
 				setTimeout(() => {
 					this.paper = '';
 					this.printer();
-				}, pause );
+				}, pause);
 			} else if(index != -1) {
 				setTimeout(() => {
 					this.paper = '';
-				}, pause );
+				}, pause);
 			}
 		}
 	}

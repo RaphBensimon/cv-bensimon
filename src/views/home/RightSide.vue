@@ -1,5 +1,5 @@
 <template>
-	<div id="right-side">
+	<div id="right-side" class="child-my-3">
 		<img src="@/assets/img/raphael-bensimon.jpg" id="profile-picture" />
 		<div class="container">
 			<h5>Contact</h5>

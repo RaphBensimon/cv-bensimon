@@ -15,16 +15,28 @@ export default {
 		maxWidth : {
 			type     : Number,
 			required : true,
+		},
+		animateOnScroll : {
+			type     : Boolean,
+			required : false,
+			default  : false
 		}
 	},
 	data() {
 		return {
-			isMounted : false
+			visible : false
 		};
+	},
+	created() {
+		if(this.animateOnScroll) {
+			window.addEventListener('scroll', this.animationOnScroll);
+		} else {
+			this.visible = true;
+		}
 	},
 	computed : {
 		getPercentage() {
-			if(this.isMounted) {
+			if(this.visible) {
 				return this.percentage;
 			} else {
 				return 0;
@@ -32,9 +44,15 @@ export default {
 		}
 	},
 	mounted() {
-		setTimeout(() => {
-			this.isMounted = true;
-		}, 0);
+	},
+	methods : {
+		animationOnScroll() {
+			if(window.innerHeight - this.$el.getBoundingClientRect().top > 0) {
+				this.visible = true;
+			} else {
+				this.visible = false;
+			}
+		}
 	}
 };
 </script>
@@ -52,12 +70,6 @@ export default {
 	to {
 		transform: translateX(100%);
 	}
-}
-.progress-bar, .progress-percentage {
-	border-top-left-radius: 0;
-	border-top-right-radius: $border-radius;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: $border-radius;
 }
 .progress-percentage {
 	width: 0;

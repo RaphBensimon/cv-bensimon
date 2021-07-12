@@ -64,21 +64,21 @@ export default {
 #bar{
 	height: 100%;
 	width: 400%;
-	animation: right-to-left 20s linear infinite;
 	object-fit: cover;
 	background-repeat: repeat;
 	position: relative;
 	background-image: url('../assets/img/bar.png');
-}
-@keyframes right-to-left {
-	0% { left: 0;}
-    100%{ left : -200%;}
 }
 header {
 	padding: 50px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+@media screen and (max-width: 585px){
+	header {
+		padding: 20px 30px;
+	}
 }
 h1 {
     font-size: 4rem;
