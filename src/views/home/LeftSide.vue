@@ -56,7 +56,11 @@ export default {
 					icon  : 'logo-github'
 				},
 			],
-			education : [
+		};
+	},
+	computed : {
+		education() {
+			return [
 				{
 					value  : 'Master MS2I',
 					school : 'ORT Montreuil 2019'
@@ -73,11 +77,13 @@ export default {
 					value  :  this.$i18n.t('baccalaureate') + ' STL',
 					school : this.$i18n.t('high-school') + 'Gregor Mendel'
 				},
-			],
-			passion : [
+			];
+		},
+		passion() {
+			return [
 				this.$i18n.t('automotive')
-			]
-		};
+			];
+		}
 	}
 };
 </script>

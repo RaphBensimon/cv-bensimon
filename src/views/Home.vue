@@ -140,7 +140,7 @@ footer {
 	},
 	"fr": {
 		"web-developer": "Développeur web",
-		"developed-with-vues": "Développé sous vuejs"
+		"developed-with-vuejs": "Développé sous vuejs"
 	}
 }
 </i18n>

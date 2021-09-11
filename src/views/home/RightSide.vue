@@ -17,6 +17,11 @@
 				<p class="my-0">
 					{{ el.description }}
 				</p>
+				<ul>
+					<li v-for="(mission, index) in el.missions" :key="index">
+						{{ mission }}
+					</li>
+				</ul>
 			</div>
 		</div>
 		<div class="competencies my-4">
@@ -54,41 +59,6 @@ export default {
 	},
 	data() {
 		return {
-			experiences : [
-				{
-					company     : 'McLedger.io',
-					job         : this.$i18n.t('lead-front-end'),
-					jobType     : this.$i18n.t('permanent-position'),
-					date        : '2020 - ' + this.$i18n.t('present'),
-					// eslint-disable-next-line max-len
-					description : this.$i18n.t('mcledger-description')
-				},
-				{
-					company     : 'Data4Job.com',
-					job         : this.$i18n.t('web-developer-front-end'),
-					jobType     : this.$i18n.t('permanent-position'),
-					date        : '2019 - 2020',
-					// eslint-disable-next-line max-len
-					description : this.$i18n.t('data4job-description')
-				},
-				{
-					company     : 'Data4Job.com',
-					job         : this.$i18n.t('web-developer-front-end'),
-					jobType     : this.$i18n.t('apprenticeship'),
-					date        : '2017 - 2019',
-					// eslint-disable-next-line max-len
-					description : this.$i18n.t('data4job-description')
-				},
-				{
-					company     : 'Immojeune.com',
-					job         : this.$i18n.t('front-end-integrator'),
-					jobType     : this.$i18n.t('internship'),
-					date        : '2016',
-					// eslint-disable-next-line max-len
-					description : this.$i18n.t('immojeune-description')
-				},
-
-			],
 			competences : [
 				{
 					text       : 'VueJs',
@@ -129,6 +99,44 @@ export default {
 				'Cypress', 'MongoDB', 'Eslint', 'Stylelint', 'Git'
 			]
 		};
+	},
+	computed : {
+		experiences() {
+			return [
+				{
+					company     : 'McLedger.io',
+					job         : this.$i18n.t('lead-front-end'),
+					jobType     : this.$i18n.t('permanent-position'),
+					date        : '2020 - ' + this.$i18n.t('present'),
+					// eslint-disable-next-line max-len
+					description : this.$i18n.t('mcledger-description'),
+					missions        : [
+						this.$i18n.t('Implementation of the front-end architecture'),
+						this.$i18n.t('Setting up documentation and linters'),
+						this.$i18n.t('Proposal of visual and functional improvements'),
+						this.$i18n.t('Development of the internationalization'),
+						this.$i18n.t('Development of reusable components (tables, speedometer, calendar etc...)'),
+						this.$i18n.t('Development of the router and authorizations.'),
+						this.$i18n.t('Development of API calls')
+					],
+				},
+				{
+					company     : 'Data4Job.com',
+					job         : this.$i18n.t('web-developer-front-end'),
+					jobType     : `${this.$i18n.t('apprenticeship')} - ${this.$i18n.t('permanent-position')}`,
+					date        : '2017 - 2020',
+					// eslint-disable-next-line max-len
+					description : this.$i18n.t('data4job-description'),
+					missions    : [
+						this.$i18n.t('Development of functionalities'),
+						this.$i18n.t('Graphic redesign of application'),
+						this.$i18n.t('Development of a chrome extension'),
+						this.$i18n.t('Fix errors in front'),
+					]
+				},
+
+			];
+		}
 	}
 };
 </script>
@@ -183,7 +191,18 @@ export default {
 		"front-end-integrator": "Front-end integrator",
 		"experiences": "Experiences",
 		"competencies": "Competencies",
-		"knowledges": "Knowledges"
+		"knowledges": "Knowledges",
+		"Implementation of the front-end architecture": "Implementation of the front-end architecture",
+		"Setting up documentation and linters": "Setting up documentation and linters",
+		"Proposal of visual and functional improvements": "Proposal of visual and functional improvements",
+		"Development of the internationalization": "Development of the internationalization",
+		"Development of reusable components (tables, speedometer, calendar etc...)": "Development of reusable components (tables, speedometer, calendar etc...)",
+		"Development of the router and authorizations.": "Development of the router and authorizations.",
+		"Development of API calls": "Development of API calls",
+		"Development of functionalities": "Development of functionalities",
+		"Graphic redesign of application": "Graphic redesign of application",
+		"Development of a chrome extension": "Development of a chrome extension",
+		"Fix errors in front": "Fix errors in front"
 	},
 	"fr": {
 		"introduction-text-part-1":  "En tant que développeur web, mon objectif est de comprendre les besoins des clients, des équipes internes et de les convertir en une",
@@ -201,7 +220,19 @@ export default {
 		"front-end-integrator": "Intégrateur front-end",
 		"experiences": "Expériences",
 		"competencies": "Compétences",
-		"knowledges": "Connaissances"
+		"knowledges": "Connaissances",
+		"Implementation of the front-end architecture": "Mise en place de l'architecture front-end",
+		"Setting up documentation and linters": "Mise en place d'une documentation et de linters",
+		"Proposal of visual and functional improvements": "Proposition d'amélioration visuelles et fonctionnelles",
+		"Development of the internationalization": "Développement de l'internationalization",
+		"Development of reusable components (tables, speedometer, calendar etc...)": "Développement de composants réutilisables (tableaux, speedometer, calendrier etc...)",
+		"Development of the router and authorizations.": "Développement du router et des autorisations",
+		"Development of API calls": "Développement des appels API",
+		"Development of functionalities": "Développement de fonctionnalités",
+		"Graphic redesign of application": "Refontes graphiques d'applications",
+		"Development of a chrome extension": "Développement d'une extension chrome",
+		"Fix errors in front": "Correction des bugs front"
+		
 	}
 }
 </i18n>

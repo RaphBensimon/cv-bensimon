@@ -8,7 +8,10 @@
 		<router-view v-slot="{ Component }">
 			<transition name="no-mode-fade">
 				<Loader :loading="loading" v-if="loading" id="loader" />
-				<component v-else :is="Component" />
+				<div v-else class="content">
+					<component :is="Component" />
+					<Switch v-model="$i18n.locale" :options="['en', 'fr']" />
+				</div>
 			</transition>
 		</router-view>
 	</div>
@@ -16,9 +19,11 @@
 <script>
 import { useMeta } from 'vue-meta';
 import Loader from './components/app/Loader.vue';
+import Switch from '@/components/Switch.vue';
 export default {
 	components : {
 		Loader,
+		Switch
 	},
 	data() {
 		return {
@@ -61,6 +66,11 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
+/deep/.switch {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
 #router-view {
 	min-height: 100%;
 	position: relative;
